@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 // create Oscillator node
-var oscillator = audioContext.createOscillator();
-
+const oscillator = audioContext.createOscillator();
 let masterGainNode = audioContext.createGain();
 masterGainNode.connect(audioContext.destination);
 
@@ -12,9 +11,9 @@ oscillator.type = "sawtooth";
 
 const oscSlice = createSlice({
   name: "oscillator",
-  initialState: { oscillator, playing: false },
+  initialState: { playing: false },
   reducers: {
-    toggleOscillator({ playing, oscillator }) {
+    toggleOscillator({ playing }) {
       playing ? oscillator.stop() : oscillator.start();
       playing = !playing;
     },
