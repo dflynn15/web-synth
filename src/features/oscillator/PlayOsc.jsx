@@ -4,7 +4,7 @@ import { toggleOscillator } from "./oscSlice";
 
 const mapDispatch = { toggleOscillator };
 
-const PlayOsc = ({ addTodo }) => {
+const PlayOsc = ({ toggleOscillator }) => {
   return (
     <button
       onClick={() => {
