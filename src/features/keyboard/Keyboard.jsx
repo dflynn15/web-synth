@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { playOscillator, stopOscillator } from "./keyboardSlice";
+import { debounce } from "lodash";
 import OscillatorKey from "./OscillatorKey";
 
 const mapDispatch = { playOscillator, stopOscillator };
@@ -10,10 +11,11 @@ const mapStateToProps = ({ playing }) => {
 
 const Keyboard = ({ playing, playOscillator, stopOscillator }) => {
   const upHandler = (e) => {
-    playOscillator(e.code);
+    stopOscillator(e.key);
   };
+
   const downHandler = (e) => {
-    stopOscillator(e.code);
+    playOscillator(e.key);
   };
 
   useEffect(() => {

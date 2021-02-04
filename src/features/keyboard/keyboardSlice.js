@@ -1,21 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createOscillator, mapKeyToOscillator } from "./oscillatorManager";
-
-const oscillators = [];
+import { isValidKey, playNote, stopNote } from "./oscillatorManager";
 
 const oscSlice = createSlice({
   name: "oscillator",
-  initialState: { oscillators, playing: false, register: 3 },
+  initialState: { oscillators: [], playing: false, register: 3 },
   reducers: {
     playOscillator(state, { payload }) {
-      state.oscillators = [...state.oscillators, payload.keyCode];
-      state.playing = true;
+      if (isValidKey(payload)) {
+        state.oscillators = [...state.oscillators, payload];
+        state.playing = true;
+        playNote(payload, state.register);
+      }
     },
     stopOscillator(state, { payload }) {
-      state.oscillators = state.oscillators.filter(
-        (osc) => osc === payload.keyCode
-      );
-      state.playing = false;
+      if (isValidKey(payload)) {
+        state.oscillators = state.oscillators.filter((osc) => osc !== payload);
+        state.playing = false;
+        stopNote(payload, state.register);
+      }
     },
   },
 });
