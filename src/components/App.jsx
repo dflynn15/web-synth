@@ -1,10 +1,6 @@
 import React from "react";
-import PlayOsc from "../features/oscillator/PlayOsc";
+import Keyboard from "../features/keyboard/Keyboard";
 
 export default () => {
-  return (
-    <>
-      <PlayOsc />
-    </>
-  );
+  return <Keyboard />;
 };

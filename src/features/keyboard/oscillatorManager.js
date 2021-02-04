@@ -1,3 +1,4 @@
+import { KEYS } from "./Keyboard";
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
 export const createOscillator = () => {
@@ -9,3 +10,5 @@ export const createOscillator = () => {
   oscillator.connect(masterGainNode);
   return oscillator;
 };
+
+export const mapKeyToOscillator = () => {};

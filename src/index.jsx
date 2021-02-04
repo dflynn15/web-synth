@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import App from "./components/App";
 
-import oscReducer from "./features/oscillator/oscSlice";
+import oscReducer from "./features/keyboard/keyboardSlice";
 
 const store = configureStore({
   reducer: oscReducer,
